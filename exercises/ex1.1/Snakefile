@@ -1,0 +1,15 @@
+configfile: "config.yaml"
+
+rule all:
+    input:
+        expand("abricate/{samples}_abricate_res.tsv", samples=config["samples"])
+
+rule abricate:
+    input:
+        "data/{samples}.fasta"
+    output:
+        "abricate/{samples}_abricate_res.tsv"
+    params:
+        db=config["amr_db"]
+    shell:
+        "abricate --db {params.db} {input} > {output}"

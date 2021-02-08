@@ -1,0 +1,8 @@
+# load modules
+include: "rules/common.smk"
+include: "rules/readQC.smk"
+include: "rules/assembly.smk"
+
+rule all:
+    input:
+        expand("spades/{samples}", samples=samples_tbl.Sample)

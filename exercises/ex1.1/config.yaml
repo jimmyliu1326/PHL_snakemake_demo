@@ -1,0 +1,5 @@
+samples:
+    sample_1
+    sample_2
+threads: 4
+amr_db: card

@@ -1,0 +1,20 @@
+import pandas as pd
+
+samples_file=config["samples"]
+samples_tbl=pd.read_csv(samples_file, header = None)
+samples_tbl.columns=["Sample", "Path"]
+samples_tbl=samples_tbl.set_index("Sample", drop=False)
+
+rule all:
+    input:
+        expand("abricate/{samples}_abricate_res.tsv", samples=samples_tbl.Sample)
+
+rule abricate:
+    input:
+        lambda wildcards: samples_tbl.Path[wildcards.samples]
+    output:
+        "abricate/{samples}_abricate_res.tsv"
+    params:
+        db=config["amr_db"]
+    shell:
+        "abricate --db {params.db} {input} > {output}"
