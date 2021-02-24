@@ -1,0 +1,13 @@
+name: snakemake_demo2
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - snakemake-minimal
+  - spades
+  - graphviz
+  - fastp
+  - abricate
+  - pip
+  - pip:
+    - pandas
