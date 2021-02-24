@@ -1,0 +1,2 @@
+sample_1,data/sample_1_R1.fastq.gz,data/sample_1_R2.fastq.gz,trim
+sample_2,data/sample_2_R1.fastq.gz,data/sample_2_R2.fastq.gz,notrim
